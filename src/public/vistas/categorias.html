@@ -1,0 +1,60 @@
+<div id="modalFormulario" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registrar Articulo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" id="fm-Rg-Categoria" autocomplete="off">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="nombre-categoria" class="form-control-label">Nombre:</label>
+                            <input type="hidden" id="id-categoria">
+                            <input type="text" id="nombre-categoria" class="form-control" placeholder="Nombre Categoria">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="descripcion-categoria" class="form-control-label">Descripción Categoría:</label>
+                            <textarea id="descripcion-categoria" class="form-control" placeholder="Descripción Categoría" cols="30"
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+            
+                    <button type="button" onclick="controllerCategorias.cnRgCategoria()" class="btn btn-dark mb-2" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Registrar Categoria" id="btn-Rg-Categoria" class="btn btn-success mb-2">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <h4 class="title">Listado Categorias</h4>
+
+    <button id="btn-Ag-Categoria" class="btn btn-primary ml-2 mb-2" onclick="controllerCategorias.agCategoria()" data-toggle="modal" data-target="#modalFormulario"> <i
+            class="fa fa-plus"></i></button>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-6">
+        <div class="input-group">
+            <input type="text" id="buscar" class="form-control col-md-10" placeholder="Buscar Categoría"
+                title="Buscar una categoría por nombre">
+            <button class="btn btn-secondary col-md-2" onclick="controllerCategorias.bsCategoria()"><i class="fa fa-search"></i> </button>
+        </div>
+        <span class="alerta-buscador text-danger"></span>
+    </div>
+</div>
+<table id="ls-categorias" class="table table-bordered table-collapse table-hover">
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Opciones</th>
+    </thead>
+
+    <tbody>
+    </tbody>
+</table>
