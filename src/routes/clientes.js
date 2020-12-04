@@ -19,7 +19,7 @@ ruta.get('/', async (req, res) => {
 })
 
 ruta.post('/registrar', async (req, res) => {
-    const { nombre, num_documento, direccion, telefono, email} = req.body
+    const { nombre, num_documento, direccion, telefono, email } = req.body
 
     Personas.create({
         nombre: nombre,

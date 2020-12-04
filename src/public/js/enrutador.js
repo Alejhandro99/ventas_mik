@@ -30,6 +30,7 @@ const enrutar = ruta => {
                 break
 
             case 'articulos':
+                controllerArticulos.llenarCategorias()
                 controllerArticulos.obtenerDatosArticulos().then(articulos => {
                     controllerArticulos.lsArticulos(articulos)
                 })
@@ -40,13 +41,18 @@ const enrutar = ruta => {
                     if(id === ''){
                         controllerArticulos.rgArticulo()
                     }else{
-                        controllerArticulos.edArticulo()
+                        controllerArticulos.edArticulo(id)
                     }
+                }, false)
+
+                document.querySelector('#buscar').addEventListener('change', ()=> {
+                    controllerArticulos.obtenerDatosArticulos().then(categorias => {
+                        controllerArticulos.lsArticulos(categorias)
+                    })
                 }, false)
                 break
 
             case 'categorias':
-                controllerArticulos.llenarCategorias()
                 controllerCategorias.obtenerDatosCategorias().then(categorias => {
                     controllerCategorias.lsCategorias(categorias)
                 })
@@ -57,7 +63,7 @@ const enrutar = ruta => {
                     if(id === ''){
                         controllerCategorias.rgCategoria()
                     }else{
-                        controllerCategorias.edCategoria()
+                        controllerCategorias.edCategoria(id)
                     }
                 }, false)
 
@@ -69,7 +75,25 @@ const enrutar = ruta => {
                 break
 
             case 'clientes':
-                
+                controllerClientes.obtenerDatosClientes().then(clientes => {
+                    controllerClientes.lsClientes(clientes)
+                })
+
+                document.querySelector('#fm-Rg-Cliente').addEventListener('submit', (e) => {
+                    const id = document.querySelector('#id-cliente').value
+                    e.preventDefault()
+                    if(id === ''){
+                        controllerClientes.rgCliente()
+                    }else{
+                        controllerClientes.edCliente(id)
+                    }
+                }, false)
+
+                document.querySelector('#buscar').addEventListener('change', ()=> {
+                    controllerClientes.obtenerDatosClientes().then(clientes => {
+                        controllerClientes.lsClientes(clientes)
+                    })
+                }, false)
                 break
             
             case 'usuarios':

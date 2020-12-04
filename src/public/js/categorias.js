@@ -22,19 +22,35 @@ const controllerCategorias = {
 
                 let botones
                 if(categorias[i].condicion === 0){
-                    botones = '<button type="button" class="btn btn-warning btn-sm" onclick="controllerCategorias.msCategoria('+categorias[i].id+')"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger btn-sm" onclick="controllerCategorias.dsCategoria('+categorias[i].id+')"><i class="fa fa-times"></i></button>'
+                    botones = `
+                        <button type="button" class="btn btn-warning btn-sm" onclick="controllerCategorias.msCategoria(${categorias[i].id})"><i class="fa fa-edit"></i></button> 
+                        <button type="button" class="btn btn-danger btn-sm" onclick="controllerCategorias.dsCategoria(${categorias[i].id})"><i class="fa fa-times"></i></button>
+                    `
                 }else{
-                    botones = '<button type="button" class="btn btn-warning btn-sm" onclick="controllerCategorias.msCategoria('+categorias[i].id+')"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-success btn-sm" onclick="controllerCategorias.acCategoria('+categorias[i].id+')"><i class="fa fa-check"></i></button>'
+                    botones = `
+                        <button type="button" class="btn btn-warning btn-sm" onclick="controllerCategorias.msCategoria(${categorias[i].id})"><i class="fa fa-edit"></i></button> 
+                        <button type="button" class="btn btn-success btn-sm" onclick="controllerCategorias.acCategoria(${categorias[i].id})"><i class="fa fa-check"></i></button>
+                        `
                 }
     
-                filaCategoria = '<tr><td>'+categorias[i].id+'</td><td>'+categorias[i].nombre+'</td><td>'+categorias[i].descripcion+'</td><td>'+botones+'</td><tr>'
+                filaCategoria = `
+                    <td>${categorias[i].id}</td>
+                    <td>${categorias[i].nombre}</td>
+                    <td>${categorias[i].descripcion}</td>
+                    <td>${botones}</td>
+                    `
 
                 tr.innerHTML = filaCategoria
                 document.querySelector('#ls-categorias').children[1].append(tr)
             }
 
         }else{
-            document.querySelector('#ls-categorias').children[1].innerHTML= '<tr><td colspan="7" class="text-center">No se encontron ninguna categoría.</td></tr>'
+            document.querySelector('#ls-categorias').children[1].innerHTML= `
+            <tr>
+                <td colspan="7" class="text-center">
+                    No se encontron ninguna categoría.
+                </td>
+            </tr>`
         }
     },
     agCategoria: () => { 
@@ -124,12 +140,11 @@ const controllerCategorias = {
             })
         }
     },
-    edCategoria: async () => {
-        const id = document.querySelector('#id-categoria').value
+    edCategoria: async id => {
         const nombre = document.querySelector('#nombre-categoria').value
         const descripcion = document.querySelector('#descripcion-categoria').value
     
-        if(id !== '' && nombre !== '' && descripcion !== ''){
+        if(nombre !== '' && descripcion !== ''){
             const datos = {
                 nombre: nombre,
                 descripcion: descripcion

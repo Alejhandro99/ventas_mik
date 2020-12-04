@@ -32,7 +32,6 @@ ruta.post('/registrar', async (req, res) => {
 
 ruta.get('/mostrar/:id', async (req, res) => {
     const articulo = await Articulos.findByPk(req.params.id)
-
     res.json(articulo)
 })
 
