@@ -2,7 +2,7 @@
     width: 100%;
     height: 8vh;
     color: #fff;
-    background: rgb(62, 109, 240);
+    background: rgb(15, 15, 15);
 
     position: fixed;
     top: 0;
@@ -39,7 +39,7 @@
 .sidebar {
     width: 20%;
     height: 92vh;
-    background: #0a0a0a;
+    background: rgb(186, 186, 196);
 
     position: fixed;
     top: 8vh;
@@ -54,17 +54,15 @@
     width: 100%;
     padding: 0.2em 0.4em;
 
-    border-bottom: 1px solid #bbb
+    border-bottom: 1px solid rgba(0, 0, 0, 0.671)
 }
 
 .sidebar>.nav>.nav-item>.nav-link {
-    color: #bbbbbb;
+    color: #ffffff;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    border-radius: 4px;
 }
 
 .sidebar>.nav>.nav-item>.nav-link.active {
@@ -121,7 +119,7 @@ section#vistas {
     flex-direction: row;
     justify-content: space-between;
 
-    border-top: 4px solid rgb(89, 89, 223);
+    border-top: 4px solid rgb(39, 39, 39);
     border-bottom: 2px solid rgba(158, 158, 158, 0.3)
 }
 

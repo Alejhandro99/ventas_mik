@@ -16,7 +16,7 @@ Categorias.init({
 },{
     sequelize,
     modelName: 'Categorias',
-    tableName: 'categorias_66'
+    tableName: 'categorias_79'
 })
 
 module.exports = Categorias

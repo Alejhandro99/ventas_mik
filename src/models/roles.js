@@ -16,7 +16,7 @@ Roles.init({
 }, {
     sequelize,
     modelName: 'Roles',
-    tableName: 'roles_66'
+    tableName: 'roles_79'
 })
 
 module.exports = Roles

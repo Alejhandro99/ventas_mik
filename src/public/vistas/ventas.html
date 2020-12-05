@@ -1,157 +1,141 @@
-<div id="divListado">
-    <div class="row">
-        <h4 class="title">Listado Ingresos</h4>
-
-        <button id="btn-agregar-venta" class="btn btn-primary ml-2 mb-2" onclick="agVenta()"><i class="fa fa-add"></i></button>
-    </div>
-    
-    <div id="divFormulario">
-        <h4 class="title">Registrar Venta</h4>
-        <form action="" id="fr-Rg-Ventas" autocomplete="off">
-            <div class="row">
-                <div class="form-group col-md-12">
-                    <label for="cliente" class="form-control-label">Cliente:</label>
-                    <select id="cliente" class="custom-select">
-    
-                    </select>
-                </div>
+<div id="modalFormulario" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registrar Venta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="tipo-comprobante" class="form-control-labe">Tipo Comprobante: </label>
-                    <select id="tipo-comprobante" class="custom-select">
-                        <option value="Boleta">Boleta</option>
-                        <option value="Factura">Factura</option>
-                    </select>
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="serie-comprobante" class="form-control-label">Serie Comprobante: </label>
-                    <input type="text" id="serie-comprobante" class="form-control" placeholder="Serie comprobante">
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="numero-comprobante" class="form-control-label">Numero Comprobante: </label>
-                    <input type="text" id="numero-comprobante" class="form-control" placeholder="Numero comprobante">
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="producto" class="form-control-label">Producto: </label>
-                    <select id="producto" class="custom-select">
-        
-                    </select>
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label for="cantidad-producto" class="form-control-label">Cantidad:</label>
-                    <input type="number" id="cantidad-producto" class="form-control" size="5" maxlength="5">
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label for="precio-producto" class="form-control-label">Precio: </label>
-                    <input type="number" id="precio-producto" class="form-control" size="9" maxlength="9">
-                </div>
-
-                <div class="form-group col-md-2">
-                    <button type="button" id="btn-Ag-Producto" class="btn btn-secondary" onclick="agProducto()"><i class="fa fa-add"></i> </button>
-                </div>
-            </div>
-
-            <div class="row">
-                <table id="ls-Productos" class="table table-bordered table-hover">
-                    <thead>
-                        <th>Opciones</th>
-                        <th>Articulo</th>
-                        <th>Cantidad</th>
-                        <th>Precio Venta</th>
-                        <th>SubTotal</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>
-                                Impuesto (16%)
-                                <input type="hidden" id="impuesto">
-                            </th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td id="labelImpuesto">
-                                Bs/0.00
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Total
-                                <input type="hidden" id="total">
-                            </th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td id="labelTotal">
-                                Bs/0.00
-                            </td>
-                        </tr>
-                        
-                    </tfoot>
-                </table>
-            </div>
-
-            <div class="row">
-                <div class="form-group alertas-formulario col-md-8 text-center">
-                    
-                </div>
-            </div>
-            <button type="button" class="btn btn-dark mb-2" onclick="cnRgVenta()">Cancelar</button>
-            <input type="submit" value="Registar Venta" id="btn-Rg-Venta" class="btn btn-success mb-2">
-        </form>
-    </div>
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            <div class="input-group">
-                <input type="text" id="buscar" class="form-control col-md-10" placeholder="Buscar Venta" title="Buscar una venta por nombre">
-                <button class="btn btn-secondary col-md-2" onclick="bsVenta()"><i class="fa fa-search"></i></button>
+            <div class="modal-body">
+                <form action="" id="fm-Rg-Venta" autocomplete="off">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="cliente" class="form-control-label">Cliente:</label>
+                            <select id="cliente" class="custom-select">
+            
+                            </select>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="tipo-comprobante" class="form-control-labe">Tipo Comprobante: </label>
+                            <select id="tipo-comprobante" class="custom-select">
+                                <option value="Boleta">Boleta</option>
+                                <option value="Factura">Factura</option>
+                            </select>
+                        </div>
+            
+                        <div class="form-group col-md-4">
+                            <label for="serie-comprobante" class="form-control-label">Serie Comprobante: </label>
+                            <input type="text" id="serie-comprobante" class="form-control" placeholder="Serie comprobante">
+                        </div>
+            
+                        <div class="form-group col-md-4">
+                            <label for="numero-comprobante" class="form-control-label">Numero Comprobante: </label>
+                            <input type="text" id="numero-comprobante" class="form-control" placeholder="Numero comprobante">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="producto" class="form-control-label">Producto: </label>
+                            <select id="producto" class="custom-select">
+            
+                            </select>
+                        </div>
+            
+                        <div class="form-group col-md-2">
+                            <label for="cantidad-producto" class="form-control-label">Cantidad:</label>
+                            <input type="number" id="cantidad-producto" class="form-control" size="5" maxlength="5">
+                        </div>
+            
+                        <div class="form-group col-md-2">
+                            <label for="precio-producto" class="form-control-label">Precio: </label>
+                            <input type="number" id="precio-producto" class="form-control" size="9" maxlength="9">
+                        </div>
+            
+                        <div class="form-group col-md-2">
+                            <button type="button" id="btn-Ag-Producto" class="btn btn-secondary" onclick="controllerVentas.agProducto()"><i class="fa fa-plus"></i> </button>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <table id="ls-productos" class="table table-bordered table-hover">
+                            <thead>
+                                <th>Opciones</th>
+                                <th>Articulo</th>
+                                <th>Cantidad</th>
+                                <th>Precio Venta</th>
+                                <th>SubTotal</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>
+                                        Impuesto (16%)
+                                        <input type="hidden" id="impuesto">
+                                    </th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td id="label-impuesto">
+                                        Bs/0.00
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Total
+                                        <input type="hidden" id="total">
+                                    </th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td id="label-total">
+                                        Bs/0.00
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+            
+                    <button type="button" class="btn btn-dark mb-2" onclick="controllerVentas.cnRgVenta()" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Registar Venta" id="btn-Rg-Venta" class="btn btn-success mb-2">
+                </form>
             </div>
         </div>
     </div>
-    <table id="ls-ventas" class="table table-bordered table-collapse table-hover">
-        <thead>
-            <th>Fecha</th>
-            <th>Proveedor</th>
-            <th>Comprobante</th>
-            <th>Impuesto</th>
-            <th>Total</th>
-            <th>Estado</th>
-            <th>Opciones</th>
-        </thead>
-
-        <tbody>
-            
-        </tbody>
-    </table>
-
-    <script>
-        if($('#listadoIngresos').length > 0){
-            $('#divFormulario').hide()
-            datosIngresos()
-            listaProveedores()
-            listaProductos()
-
-            $('#formularioRegistroIngreso').on('submit', function(e){
-                e.preventDefault()
-                registrarIngreso() 
-            })
-
-            $('#buscarIngreso').change(function(){
-                if($(this).val() === ''){
-                    datosIngresos()
-                }
-            })
-        }
-    </script>
 </div>
+
+<div class="row">
+    <h4 class="title">Listado Ventas</h4>
+
+    <button id="btn-Ag-Venta" class="btn btn-primary ml-2 mb-2" onclick="controllerVentas.agVenta()" data-toggle="modal" data-target="#modalFormulario"><i class="fa fa-plus"></i></button>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-6">
+        <div class="input-group">
+            <input type="text" id="buscar" class="form-control col-md-10" placeholder="Buscar Venta"
+                title="Buscar una venta por nombre de cliente">
+            <button class="btn btn-secondary col-md-2" onclick="controllerVentas.bsVenta()"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+</div>
+<table id="ls-ventas" class="table table-bordered table-collapse table-hover">
+    <thead>
+        <th>Fecha</th>
+        <th>Cliente</th>
+        <th>Comprobante</th>
+        <th>Impuesto</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Opciones</th>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>

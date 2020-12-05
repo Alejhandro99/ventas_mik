@@ -25,8 +25,24 @@ const enrutar = ruta => {
         
         switch(vista){
             case 'ventas':
+                controllerVentas.lsCliente()
+                controllerVentas.lsProductos()
+                controllerVentas.obtenerDatosVentas().then(ventas => {
+                    controllerVentas.lsVentas(ventas)
+                })
 
+                document.querySelector('#fm-Rg-Venta').addEventListener('submit', (e) => {
+                    e.preventDefault()
+                    controllerVentas.rgVenta()
+                }, false)
                 
+                document.querySelector('#buscar').addEventListener('change', () => {
+                    if(document.querySelector('#buscar').value === ''){
+                        controllerVentas.obtenerDatosVentas().then(ventas => {
+                            controllerVentas.lsVentas(ventas)
+                        })
+                    }
+                })
                 break
 
             case 'articulos':
@@ -46,9 +62,11 @@ const enrutar = ruta => {
                 }, false)
 
                 document.querySelector('#buscar').addEventListener('change', ()=> {
-                    controllerArticulos.obtenerDatosArticulos().then(categorias => {
-                        controllerArticulos.lsArticulos(categorias)
-                    })
+                    if(document.querySelector('#buscar').value === ''){
+                        controllerArticulos.obtenerDatosArticulos().then(categorias => {
+                            controllerArticulos.lsArticulos(categorias)
+                        })
+                    }
                 }, false)
                 break
 
@@ -68,9 +86,11 @@ const enrutar = ruta => {
                 }, false)
 
                 document.querySelector('#buscar').addEventListener('change', ()=> {
-                    controllerCategorias.obtenerDatosCategorias().then(categorias => {
-                        controllerCategorias.lsCategorias(categorias)
-                    })
+                    if(document.querySelector('#buscar').value === ''){
+                        controllerCategorias.obtenerDatosCategorias().then(categorias => {
+                            controllerCategorias.lsCategorias(categorias)
+                        })
+                    }
                 }, false)
                 break
 
@@ -90,9 +110,11 @@ const enrutar = ruta => {
                 }, false)
 
                 document.querySelector('#buscar').addEventListener('change', ()=> {
-                    controllerClientes.obtenerDatosClientes().then(clientes => {
-                        controllerClientes.lsClientes(clientes)
-                    })
+                    if(document.querySelector('#buscar').value === ''){
+                        controllerClientes.obtenerDatosClientes().then(clientes => {
+                            controllerClientes.lsClientes(clientes)
+                        })
+                    }
                 }, false)
                 break
             
@@ -113,9 +135,11 @@ const enrutar = ruta => {
                 }, false)
 
                 document.querySelector('#buscar').addEventListener('change', () => {
-                    controllerUsuarios.obtenerDatosUsuarios().then(usuarios => {
-                        controllerUsuarios.lsUsuarios(usuarios)
-                    })
+                    if(document.querySelector('#buscar').value === ''){
+                        controllerUsuarios.obtenerDatosUsuarios().then(usuarios => {
+                            controllerUsuarios.lsUsuarios(usuarios)
+                        })
+                    }
                 }, false)
                 break
         }

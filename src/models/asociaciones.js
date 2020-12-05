@@ -12,14 +12,14 @@ Articulos.belongsTo(Categorias, {foreignKey: 'idcategoria'})
 Articulos.hasMany(DetalleV, {foreignKey: 'idarticulo'})
 DetalleV.belongsTo(Articulos, {foreignKey: 'idarticulo'})
 
-Ventas.hasOne(DetalleV, {foreignKey: 'idingreso'})
-DetalleV.belongsTo(Ventas, {foreignKey: 'idingreso'})
+Ventas.hasOne(DetalleV, {foreignKey: 'idventa'})
+DetalleV.belongsTo(Ventas, {foreignKey: 'idventa'})
 
 Users.hasMany(Ventas, {foreignKey: 'idusuario'})
 Ventas.belongsTo(Users, {foreignKey: 'idusuario'})
 
-Users.hasMany(Ventas, {foreignKey: 'idproveedor'})
-Ventas.belongsTo(Users, {foreignKey: 'idproveedor'})
+Users.hasMany(Ventas, {foreignKey: 'idcliente'})
+Ventas.belongsTo(Users, {foreignKey: 'idcliente'})
 
 Personas.hasOne(Users, {foreignKey: 'id'})
 Users.belongsTo(Personas, {foreignKey: 'id'})

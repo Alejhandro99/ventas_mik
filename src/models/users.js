@@ -19,7 +19,7 @@ Users.init({
 },{
     sequelize,
     modelName: 'Users',
-    tableName: 'users_66'
+    tableName: 'users_79'
 })
 
 module.exports = Users

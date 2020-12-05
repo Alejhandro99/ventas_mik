@@ -71,7 +71,7 @@ const controllerUsuarios = {
     agUsuario: () => {
         controllerUsuarios.lmFrUsuario()
     },
-    cnRegistroUsuario: () => {
+    cnRgUsuario: () => {
         controllerUsuarios.lmFrUsuario()
     },
     lmFrUsuario: () => {
@@ -271,7 +271,7 @@ const controllerUsuarios = {
         }
     },
     bsUsuario: async () => {
-        const usuario = $('#buscar').val()
+        const usuario = document.querySelector('#buscar').value
         
         const request = await fetch(controllerUsuarios.url+`/buscar/${usuario}`, {
             method: 'GET'

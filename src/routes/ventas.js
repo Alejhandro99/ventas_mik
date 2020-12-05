@@ -57,7 +57,7 @@ ruta.post('/registrar', async (req, res) => {
     if(status){
         res.json({message: 'Venta Registrada !!'})
     }else{
-        res.json({message: 'Error al registrar la venta'})
+        res.json({message: ''})
     }
 })
 
@@ -86,7 +86,7 @@ ruta.patch('/anular/:id',  async (req, res) => {
     }).then(() => {
         res.json({message: 'Venta Anulado !!'})
     }).catch(err => {
-        res.json({message: 'Error al anular la venta: '+err.message})
+        res.json({message: ''})
     })
 })
 

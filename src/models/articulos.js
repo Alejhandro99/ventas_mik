@@ -32,7 +32,7 @@ Articulos.init({
 },{
     sequelize,
     modelName: 'Articulos',
-    tableName: 'articulos_66'
+    tableName: 'articulos_79'
 })
 
 module.exports = Articulos
