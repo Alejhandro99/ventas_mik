@@ -42,10 +42,10 @@ ruta.post('/registrar', async (req, res) => {
         }).then(() => {
             res.json({message: 'Usuario Registrado !!'})
         }).catch(err => {
-            res.json({message: '', error: err.message})
+            res.json({message: ''})
         })
     }).catch(err => {
-        res.json({message: '', error: err.message})
+        res.json({message: ''})
     })
 })
 
@@ -77,10 +77,10 @@ ruta.patch('/actualizar/:id', async (req, res) => {
         }).then(() => {
             res.json({message: 'Usuario Actualizado !!'})
         }).catch(err => {
-            res.json({message: '', error: err.message})
+            res.json({message: ''})
         })
     }).catch(err => {
-        res.json({message: '',  error:err.message})
+        res.json({message: ''})
     })
 })
 

@@ -17,7 +17,7 @@ const controllerVentas = {
 
             document.querySelector('#cliente').innerHTML = optionCliente
         }else{
-            document.querySelector('#cliente').innerHTML = '<option> No hay clientes </option>'
+            document.querySelector('#cliente').innerHTML = '<option value = "0"> No hay clientes </option>'
         }
     },
     obtenerDatosVentas: async () => {
@@ -28,12 +28,10 @@ const controllerVentas = {
         return ventas
     },
     lsVentas: ventas => {
-        let i
-    
         document.querySelector('#ls-ventas').children[1].innerHTML = ''
         if(ventas.length > 0){
             let filaVenta
-            for(i = 0; i < ventas.length; i++){
+            for(let i = 0; i < ventas.length; i++){
                 let botones
 
                 if(ventas[i].User !== null){
@@ -147,6 +145,12 @@ const controllerVentas = {
                         controllerVentas.lsVentas(ventas)
                     })
                 })
+            }else{
+                swal({
+                    title: "Venta no se puedo registrar !!",
+                    icon: "danger",
+                    button: "Aceptar"
+                })
             }
         }else{
             swal({
@@ -171,7 +175,7 @@ const controllerVentas = {
             }
             document.querySelector('#producto').innerHTML = optionProducto
         }else{
-            document.querySelector('#producto').innerHTML = `<option> No hay producto </option>`
+            document.querySelector('#producto').innerHTML = `<option value = "0"> No hay producto </option>`
         }
     },
     agProducto: async () => {
@@ -316,6 +320,12 @@ const controllerVentas = {
                 controllerVentas.obtenerDatosVentas().then(ventas => {
                     controllerVentas.lsVentas(ventas)
                 })
+            })
+        }else{
+            swal({
+                title: "Venta no se puedo anular !!",
+                icon: "danger",
+                button: "Aceptar"
             })
         }
     },

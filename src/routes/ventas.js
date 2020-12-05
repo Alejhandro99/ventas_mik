@@ -84,7 +84,7 @@ ruta.patch('/anular/:id',  async (req, res) => {
     venta.update({
         estado: 'Anulado'
     }).then(() => {
-        res.json({message: 'Venta Anulado !!'})
+        res.json({message: 'Venta Anulada !!'})
     }).catch(err => {
         res.json({message: ''})
     })

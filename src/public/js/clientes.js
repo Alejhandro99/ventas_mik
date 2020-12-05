@@ -12,13 +12,12 @@ const controllerClientes = {
         return clientes
     },
     lsClientes: clientes => {
-        let i
         document.querySelector('#ls-clientes').children[1].innerHTML = ''
       
         if(clientes.length > 0){
            
             let filaCliente
-            for(i = 0; i < clientes.length; i++){
+            for(let i = 0; i < clientes.length; i++){
                 const tr = document.createElement('tr')
                 let botones
                 if(clientes[i].User.condicion === 0){
@@ -93,7 +92,6 @@ const controllerClientes = {
             if(response.message !== ''){
                 swal({
                     title: "Cliente Registrado !!",
-                    text: `${response.message}`,
                     icon: "success",
                     button: "Aceptar"
                 }).then(() => {
@@ -102,6 +100,12 @@ const controllerClientes = {
                     controllerClientes.obtenerDatosClientes().then(clientes => {
                         controllerClientes.lsClientes(clientes)
                     })
+                })
+            }else{
+                swal({
+                    title: "Cliente no se pudo registrar !!",
+                    icon: "success",
+                    button: "Aceptar"
                 })
             }
         }else{
@@ -167,7 +171,6 @@ const controllerClientes = {
             if(response.message !== ''){
                 swal({
                     title: "Cliente Actualizado !!",
-                    text: `${response.message}`,
                     icon: "success",
                     button: "Aceptar"
                 }).then(() => {
@@ -176,6 +179,12 @@ const controllerClientes = {
                     controllerClientes.obtenerDatosClientes().then(clientes => {
                         controllerClientes.lsClientes(clientes)
                     })
+                })
+            }else{
+                swal({
+                    title: "Cliente no se pudo actualizar !!",
+                    icon: "success",
+                    button: "Aceptar"
                 })
             }
         }else{
@@ -195,10 +204,9 @@ const controllerClientes = {
         })
 
         const response = await request.json()
-        if(response !== ''){
+        if(response.message !== ''){
             swal({
                 title: "Cliente Deshabilitado !!",
-                text: `${response.message}`,
                 icon: "success",
                 button: "Aceptar"
             }).then(() => {
@@ -206,6 +214,12 @@ const controllerClientes = {
                 controllerClientes.obtenerDatosClientes().then(clientes => {
                     controllerClientes.lsClientes(clientes)
                 })
+            })
+        }else{
+            swal({
+                title: "Cliente no se pudo deshabilitar !!",
+                icon: "success",
+                button: "Aceptar"
             })
         }
     },
@@ -215,7 +229,7 @@ const controllerClientes = {
         })
 
         const response = await request.json()
-        if(response !== ''){
+        if(response.message !== ''){
             swal({
                 title: "Cliente Habilitado !!",
                 text: `${response.message}`,
@@ -226,6 +240,12 @@ const controllerClientes = {
                 controllerClientes.obtenerDatosClientes().then(clientes => {
                     controllerClientes.lsClientes(clientes)
                 })
+            })
+        }else{
+            swal({
+                title: "Cliente no se pudo habilitar !!",
+                icon: "success",
+                button: "Aceptar"
             })
         }
     },

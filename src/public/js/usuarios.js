@@ -8,11 +8,9 @@ const controllerUsuarios = {
         const roles = await request.json()
 
         if(roles !== ''){
-            let i
-            let optionRol
-
             if(roles.length > 0){
-                for(i = 0; i < roles.length; i++){
+                let optionRol
+                for(let i = 0; i < roles.length; i++){
                     if(roles[i].id !== 3){
                         optionRol += `
                             <option value = "${roles[i].id}"> ${roles[i].nombre} </option>
@@ -22,7 +20,7 @@ const controllerUsuarios = {
 
                 document.querySelector('#rol-usuario').innerHTML = optionRol
             }else{
-                document.querySelector('#rol-usuario').innerHTML = '<option>No hay roles</option>'
+                document.querySelector('#rol-usuario').innerHTML = '<option value = "0">No hay roles</option>'
             }
         }
     },
@@ -35,11 +33,10 @@ const controllerUsuarios = {
         return usuarios
     },
     lsUsuarios: usuarios => {
-        let i
         document.querySelector('#ls-usuarios').children[1].innerHTML = ''
         if(usuarios.length > 0){
             let filaUsuario
-            for(i = 0; i < usuarios.length; i++){
+            for(let i = 0; i < usuarios.length; i++){
                 const tr = document.createElement('tr')
                 let botones
     
@@ -133,6 +130,12 @@ const controllerUsuarios = {
                         controllerUsuarios.lsUsuarios(usuarios)
                     })
                 })
+            }else{
+                swal({
+                    title: "Usuario no se puedo registrar !!",
+                    icon: "danger",
+                    button: "Aceptar"
+                })
             }
         }else{
             swal({
@@ -216,7 +219,11 @@ const controllerUsuarios = {
                     })
                 })
             }else{
-                console.log(response.error)
+                swal({
+                    title: "Usuario no se puedo actualizar !!",
+                    icon: "danger",
+                    button: "Aceptar"
+                })
             }
         }else{
             swal({
@@ -238,13 +245,18 @@ const controllerUsuarios = {
         if(response.message !== ''){
             swal({
                 title: "Usuario Deshabilitado !!",
-                text: `${response.message}`,
                 icon: "success",
                 button: "Aceptar"
             }).then(() => {
                 controllerUsuarios.obtenerDatosUsuarios().then(usuarios => {
                     controllerUsuarios.lsUsuarios(usuarios)
                 })
+            })
+        }else{
+            swal({
+                title: "Usuario no se puedo habilitar !!",
+                icon: "danger",
+                button: "Aceptar"
             })
         }
     },
@@ -267,6 +279,12 @@ const controllerUsuarios = {
                 controllerUsuarios.obtenerDatosUsuarios().then(usuarios => {
                     controllerUsuarios.lsUsuarios(usuarios)
                 })
+            })
+        }else{
+            swal({
+                title: "Usuario no se puedo habilitar !!",
+                icon: "danger",
+                button: "Aceptar"
             })
         }
     },

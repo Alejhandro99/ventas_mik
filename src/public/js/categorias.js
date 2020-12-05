@@ -12,12 +12,10 @@ const controllerCategorias = {
         return categorias
     },
     lsCategorias: (categorias) => {
-
-        let i
         document.querySelector('#ls-categorias').children[1].innerHTML = ''
         if(categorias.length > 0){
             let filaCategoria
-            for(i = 0; i < categorias.length; i++){
+            for(let i = 0; i < categorias.length; i++){
                 const tr = document.createElement('tr')
 
                 let botones
@@ -58,7 +56,7 @@ const controllerCategorias = {
     },
     cnRgCategoria: () => {
         $('#modalFormulario').modal('hide')
-        lmFrCategoria()
+        controllerCategorias.lmFrCategoria()
     },
     lmFrCategoria: () => {
         document.querySelector('#id-categoria').value = ''
@@ -92,7 +90,6 @@ const controllerCategorias = {
             if(response.message !== ''){
                 swal({
                     title: "Categoría Registrada !!",
-                    text: `${response.message}`,
                     icon: "success",
                     button: "Aceptar"
                 }).then(() => {
@@ -101,6 +98,12 @@ const controllerCategorias = {
                     controllerCategorias.obtenerDatosCategorias().then(categorias => {
                         controllerCategorias.lsCategorias(categorias)
                     })
+                })
+            }else{
+                swal({
+                    title: "Categoría no se pudo registrar !!",
+                    icon: "success",
+                    button: "Aceptar"
                 })
             }
                    
@@ -162,7 +165,6 @@ const controllerCategorias = {
             if(response.message !== ''){
                 swal({
                     title: "Categoría Actualizado !!",
-                    text: `${response.message}`,
                     icon: "success",
                     button: "Aceptar"
                 }).then(() => {
@@ -200,14 +202,19 @@ const controllerCategorias = {
 
         if(response.message !== ''){
             swal({
-                title: "Categoría Desactivada !!",
-                text: `${response.message}`,
+                title: "Categoría Deshabilitada !!",
                 icon: "success",
                 button: "Aceptar"
             }).then(() => {
                 controllerCategorias.obtenerDatosCategorias().then(categorias => {
                     controllerCategorias.lsCategorias(categorias)
                 })
+            })
+        }else{
+            swal({
+                title: "Categoría no se pudo deshabilitar !!",
+                icon: "success",
+                button: "Aceptar"
             })
         }
     },
@@ -223,14 +230,19 @@ const controllerCategorias = {
 
         if(response.message !== ''){
             swal({
-                title: "Categoría Activada !!",
-                text: `${response.message}`,
+                title: "Categoría Habilitada !!",
                 icon: "success",
                 button: "Aceptar"
             }).then(() => {
                 controllerCategorias.obtenerDatosCategorias().then(categorias => {
                     controllerCategorias.lsCategorias(categorias)
                 })
+            })
+        }else{
+            swal({
+                title: "Categoría no se pudo habilitar !!",
+                icon: "success",
+                button: "Aceptar"
             })
         }
     },

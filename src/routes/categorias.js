@@ -19,7 +19,7 @@ ruta.post('/registrar', async (req, res) => {
     }).then(() => {
         res.json({message: 'Categoria Registrada !!'})
     }).catch(err => {
-        res.json({message: 'Fallo al registrar categoria: '+err.message})
+        res.json({message: ''})
     })
 })
 
@@ -39,7 +39,7 @@ ruta.patch('/actualizar/:id', async (req, res) => {
     }).then(() => {
         res.json({message: 'Categoria Actualizado !!'})
     }).catch(err => {
-        res.json({message: 'Fallo al actualizar categoria: '+err.message})
+        res.json({message: ''})
     })
 })
 
@@ -51,7 +51,7 @@ ruta.patch('/desactivar/:id',  async (req, res) => {
     }).then(() => {
         res.json({message: 'Categoria Desactivado !!'})
     }).catch(err => {
-        res.json({message: 'Error al desactivar la categoria: '+err.message})
+        res.json({message: ''})
     })
 })
 
@@ -63,7 +63,7 @@ ruta.patch('/activar/:id',  async (req, res) => {
     }).then(() => {
         res.json({message: 'Categoria Activado !!'})
     }).catch(err => {
-        res.json({message: 'Error al activar la categoria: '+err.message})
+        res.json({message: ''})
     })
 })
 

@@ -36,7 +36,7 @@ ruta.post('/registrar', async (req, res) => {
         }).then(() => {
             res.json({message: 'Cliente Registrado !!'})
         }).catch(err => {
-            res.json({message: 'Error al registrar el cliente: '+err.message})
+            res.json({message: ''})
         })
     })
 })
@@ -59,7 +59,7 @@ ruta.patch('/actualizar/:id', async (req, res) => {
     }).then(() => {
         res.json({message: 'Cliente Actualizado !!'})
     }).catch(err => {
-        res.json({message: 'Error al actualizar el cliente: '+ err.message})
+        res.json({message: ''})
     })
 })
 
@@ -71,7 +71,7 @@ ruta.patch('/desactivar/:id', async (req, res) => {
     }).then(() => {
         res.json({message: 'Cliente Deshabilitado !!'})
     }).catch(err => {
-        res.json({message: 'Error al deshabilitar el cliente: '+err.message})
+        res.json({message: ''})
     })
 })
 
@@ -83,7 +83,7 @@ ruta.patch('/activar/:id', async (req, res) => {
     }).then(() => {
         res.json({message: 'Cliente Habilitado !!'})
     }).catch(err => {
-        res.json({message: 'Error al habilitar el cliente: '+err})
+        res.json({message: ''})
     })
 })
 

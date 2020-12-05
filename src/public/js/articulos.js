@@ -10,13 +10,16 @@ const controllerArticulos = {
     
         const categorias = await request.json()
         
-        let i
-        let optionCategoria = '<option value="0"> Categoria </option>'
-        for(i = 0; i < categorias.length; i++){
-            optionCategoria += `<option value="${categorias[i].id}"> ${categorias[i].nombre}</option>`
-        }
+        if(categorias.length > 0){
+            let optionCategoria = '<option value="0"> Categoria </option>'
+            for(let i = 0; i < categorias.length; i++){
+                optionCategoria += `<option value="${categorias[i].id}"> ${categorias[i].nombre}</option>`
+            }
 
-        document.querySelector('#categoria-articulo').innerHTML = optionCategoria
+            document.querySelector('#categoria-articulo').innerHTML = optionCategoria
+        }else{
+            document.querySelector('#categoria-articulo').innerHTML  = '<option value="0"> No hay Categorías </option>'
+        }
     },
     obtenerDatosArticulos: async () => {
         const request = await fetch(controllerArticulos.url, {
@@ -30,12 +33,10 @@ const controllerArticulos = {
         return articulos
     },
     lsArticulos: (articulos) => {
-
-        let i
         document.querySelector('#ls-articulos').children[1].innerHTML = ''
         if(articulos.length > 0){
             let filaArticulo
-            for(i = 0; i < articulos.length; i++){
+            for(let i = 0; i < articulos.length; i++){
                 const tr = document.createElement('tr')
 
                 let botones
@@ -68,11 +69,13 @@ const controllerArticulos = {
             }
 
         }else{
-            document.querySelector('#ls-articulos').children[1].innerHTML= `<tr>
-                <td colspan="7" class="text-center">
-                No se encontron ningún producto.
-                </td>
-            </tr>`
+            document.querySelector('#ls-articulos').children[1].innerHTML= `
+                <tr>
+                    <td colspan="7" class="text-center">
+                    No se encontron ningún producto.
+                    </td>
+                </tr>
+            `
         }
     },
     agArticulo: () => { 
@@ -126,7 +129,6 @@ const controllerArticulos = {
             if(response.message !== ''){
                 swal({
                     title: "Articulo Registrado !!",
-                    text: `${response.message}`,
                     icon: "success",
                     button: "Aceptar"
                 }).then(() => {
@@ -206,7 +208,6 @@ const controllerArticulos = {
             if(response.message !== ''){
                 swal({
                     title: "Articulo Actualizado !!",
-                    text: `${response.message}`,
                     icon: "success",
                     button: "Aceptar"
                 }).then(() => {
@@ -244,7 +245,7 @@ const controllerArticulos = {
 
         if(response.message !== ''){
             swal({
-                title: "Articulo Desactivado !!",
+                title: "Articulo Deshabilitado !!",
                 text: `${response.message}`,
                 icon: "success",
                 button: "Aceptar"
@@ -252,6 +253,12 @@ const controllerArticulos = {
                 controllerArticulos.obtenerDatosArticulos().then(articulos => {
                     controllerArticulos.lsArticulos(articulos)
                 })
+            })
+        }else{
+            swal({
+                title: "Articulo no se pudo deshabilitar !!",
+                icon: "success",
+                button: "Aceptar"
             })
         }
     },
@@ -267,7 +274,7 @@ const controllerArticulos = {
 
         if(response.message !== ''){
             swal({
-                title: "Articulo Activado !!",
+                title: "Articulo Habilitado !!",
                 text: `${response.message}`,
                 icon: "success",
                 button: "Aceptar"
@@ -275,6 +282,12 @@ const controllerArticulos = {
                 controllerArticulos.obtenerDatosArticulos().then(articulos => {
                     controllerArticulos.lsArticulos(articulos)
                 })
+            })
+        }else{
+            swal({
+                title: "Articulo no se pudo habilitar !!",
+                icon: "success",
+                button: "Aceptar"
             })
         }
     },
@@ -290,7 +303,6 @@ const controllerArticulos = {
                 }
             })
             const articulos = await request.json()
-
             controllerArticulos.lsArticulos(articulos)
         }else{
             swal({
