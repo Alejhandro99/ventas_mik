@@ -119,7 +119,7 @@ const controllerClientes = {
 
         const cliente = await request.json()
 
-        if(cliente !== ''){
+        if(cliente.id !== ''){
             document.querySelector('#id-cliente').value = cliente.id
             document.querySelector('#numero-documento-cliente').value = cliente.num_documento
             document.querySelector('#nombre-cliente').value = cliente.nombre 

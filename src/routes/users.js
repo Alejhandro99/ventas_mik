@@ -42,10 +42,10 @@ ruta.post('/registrar', async (req, res) => {
         }).then(() => {
             res.json({message: 'Usuario Registrado !!'})
         }).catch(err => {
-            res.json({message: 'Error al registrar el usuario: '+err.message})
+            res.json({message: '', error: err.message})
         })
     }).catch(err => {
-        res.json({message: 'Error al registrar el usuario: '+err.message})
+        res.json({message: '', error: err.message})
     })
 })
 
@@ -59,13 +59,29 @@ ruta.get('/mostrar/:id', async (req, res) => {
 })
 
 ruta.patch('/actualizar/:id', async (req, res) => {
-    const usuario = await Personas.findByPk(req.params.id, {
-        include: [{
-            model: Users
-        }]
-    })
+    const { num_documento, nombre, telefono, email, direccion, usuario, password, idrol } = req.body
+    const persona = await Personas.findByPk(req.params.id)
 
-    res.json(usuario)
+    persona.update({
+        numero_documento: num_documento,
+        nombre: nombre,
+        telefono: telefono,
+        email: email,
+        direccion: direccion
+    }).then(async () => {
+        const user = await Users.findByPk(req.params.id)
+        user.update({
+            usuario: usuario,
+            password: password,
+            idrol: idrol
+        }).then(() => {
+            res.json({message: 'Usuario Actualizado !!'})
+        }).catch(err => {
+            res.json({message: '', error: err.message})
+        })
+    }).catch(err => {
+        res.json({message: '',  error:err.message})
+    })
 })
 
 ruta.patch('/desactivar/:id', async (req, res) => {
@@ -76,7 +92,7 @@ ruta.patch('/desactivar/:id', async (req, res) => {
     }).then(() => {
         res.json({message: 'Usuario Deshabilitado !!'})
     }).catch(err => {
-        res.json({message: 'Error al deshabilitar el usuario'})
+        res.json({message: ''})
     })
 })
 
@@ -88,7 +104,7 @@ ruta.patch('/activar/:id', async (req, res) => {
     }).then(() => {
         res.json({message: 'Usuario Habilitado !!'})
     }).catch(err => {
-        res.json({message: 'Error al deshabilitar el usuario'})
+        res.json({message: ''})
     })
 })
 

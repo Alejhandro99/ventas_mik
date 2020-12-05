@@ -121,12 +121,12 @@ const controllerCategorias = {
             }
         })
 
-        const response = await request.json()
+        const categoria = await request.json()
 
-        if(response.message !== ''){
-            document.querySelector('#id-categoria').value = response.id
-            document.querySelector('#nombre-categoria').value = response.nombre
-            document.querySelector('#descripcion-categoria').value = response.descripcion
+        if(categoria.id !== ''){
+            document.querySelector('#id-categoria').value = categoria.id
+            document.querySelector('#nombre-categoria').value = categoria.nombre
+            document.querySelector('#descripcion-categoria').value = categoria.descripcion
 
             document.querySelector('.modal-title').textContent = 'Actualizar Categoría'
             document.querySelector('#btn-Rg-Categoria').value = 'Actualizar Categoría'

@@ -1,107 +1,95 @@
-<div id="divListado">
-    <div class="row">
-        <h4 class="title">Listado Usuarios</h4>
-
-        <button id="btn-AgUsuario" class="btn btn-primary ml-2 mb-2" onclick="agUsuario()"><i class="fa fa-search"></i></button>
-    </div>
-    
-    <div id="divFormulario">
-        <h4 class="title">Registrar Usuario</h4>
-        <form action="" id="frRgUsuario" autocomplete="off">
-            <div class="row">
-                <div class="form-group col-md-4">
-                   <label for="numero-documento-usuario" class="form-control-label">Número Documento: </label>
-                   <input type="hidden" id="idUsuario">
-                   <input type="text" id="numero-documento-usuario" class="form-control" placeholder="Número de Documento">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="nombre-usuario" class="form-control-label">Nombre Persona: </label>
-                    <input type="text" id="nombre-usuario" class="form-control" placeholder="Nombre Usuario">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="telefono-usuario" class="form-control-label">Teléfono Usuario: </label>
-                    <input type="text" id="telefono-usuario" class="form-control" placeholder="Teléfono Usuario">
-                </div>
+<div id="modalFormulario" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registrar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="email-Usuario" class="form-control-labe">Email Usuario: </label>
-                    <input type="email" id="email-Usuario" class="form-control" placeholder="Email Usuario">
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="direccion-usuario" class="form-control-label">Direccion Usuario: </label>
-                    <input type="text" id="direccion-usuario" class="form-control" placeholder="Dirección Usuario">
-                </div>
-            </div>  
+            <div class="modal-body">
+                <form action="" id="fm-Rg-Usuario" autocomplete="off">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="numero-documento-usuario" class="form-control-label">Número Documento: </label>
+                            <input type="hidden" id="id-usuario">
+                            <input type="text" id="numero-documento-usuario" class="form-control" placeholder="Número de Documento">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="nombre-usuario" class="form-control-label">Nombre Persona: </label>
+                            <input type="text" id="nombre-usuario" class="form-control" placeholder="Nombre Usuario">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="telefono-usuario" class="form-control-label">Teléfono Usuario: </label>
+                            <input type="text" id="telefono-usuario" class="form-control" placeholder="Teléfono Usuario">
+                        </div>
+                    </div>
             
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="usuario" class="form-control-label">Usuario:</label>
-                    <input type="text" id="usuario" class="form-control" placeholder="Usuario">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="password" class="form-control-label">Contraseña: </label>
-                    <input type="password" id="password" class="form-control" placeholder="Contraseña">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="rol-usuario" class="form-control-label">Rol: </label>
-                    <select id="rol-usuario" class="custom-select">
-                
-                    </select>
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="email-usuario" class="form-control-labe">Email Usuario: </label>
+                            <input type="email" id="email-usuario" class="form-control" placeholder="Email Usuario">
+                        </div>
             
-            <button type="button" class="btn btn-dark mb-2" onclick="cnRgUsuario()">Cancelar</button>
-            <input type="submit" value="Registar Usuario" id="btn-Registrar-Usuario" class="btn btn-success mb-2">
-        </form>
-    </div>
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            <div class="input-group">
-                <input type="text" id="buscar" class="form-control col-md-10" placeholder="Buscar Usuario" title="Buscar una usuario por nombre">
-                <button class="btn btn-secondary col-md-2" onclick="bsUsuario()"><i class="fa fa-search"></i></button>
+                        <div class="form-group col-md-6">
+                            <label for="direccion-usuario" class="form-control-label">Direccion Usuario: </label>
+                            <input type="text" id="direccion-usuario" class="form-control" placeholder="Dirección Usuario">
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="usuario" class="form-control-label">Usuario:</label>
+                            <input type="text" id="usuario" class="form-control" placeholder="Usuario">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="password" class="form-control-label">Contraseña: </label>
+                            <input type="password" id="password" class="form-control" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="rol-usuario" class="form-control-label">Rol: </label>
+                            <select id="rol-usuario" class="custom-select">
+            
+                            </select>
+                        </div>
+                    </div>
+            
+                    <button type="button" class="btn btn-dark mb-2" onclick="controllerUsuarios.cnRgUsuario()" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Registar Usuario" id="btn-Rg-Usuario" class="btn btn-success mb-2">
+                </form>
             </div>
         </div>
     </div>
-    <table id="ls-Usuarios" class="table table-bordered table-collapse table-hover">
-        <thead>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Télefono</th>
-            <th>Email</th>
-            <th>Usuario</th>
-            <th>Opciones</th>
-        </thead>
-
-        <tbody>
-            
-        </tbody>
-    </table>
-
-    <script>
-        if($('#listadoUsuarios').length > 0){
-            $('#divFormulario').hide()
-            datosUsuarios()
-            listaRoles()
-
-            $('#formularioRegistroUsuario').on('submit', function(e){
-                e.preventDefault()
-        
-                if($('#idUsuario').val() === ''){
-                    registrarUsuario() 
-                }else{
-                    editarUsuario()
-                } 
-            })
-
-            $('#buscarUsuario').change(function(){
-                if($(this).val() === ''){
-                    datosUsuarios()
-                }
-            })
-        }
-    </script>
 </div>
+
+<div class="row">
+    <h4 class="title">Listado Usuarios</h4>
+
+    <button id="btn-Ag-Usuario" class="btn btn-primary ml-2 mb-2" onclick="controllerUsuarios.agUsuario()" data-toggle="modal" data-target="#modalFormulario"><i
+            class="fa fa-plus"></i></button>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-6">
+        <div class="input-group">
+            <input type="text" id="buscar" class="form-control col-md-10" placeholder="Buscar Usuario"
+                title="Buscar una usuario por nombre">
+            <button class="btn btn-secondary col-md-2" onclick="controllerUsuarios.bsUsuario()"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+</div>
+
+<table id="ls-usuarios" class="table table-bordered table-collapse table-hover">
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Télefono</th>
+        <th>Email</th>
+        <th>Usuario</th>
+        <th>Opciones</th>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>

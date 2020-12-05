@@ -97,7 +97,26 @@ const enrutar = ruta => {
                 break
             
             case 'usuarios':
+                controllerUsuarios.obtenerDatosUsuarios().then(usuarios => {
+                    controllerUsuarios.lsUsuarios(usuarios)
+                })
+                controllerUsuarios.lsRoles()
 
+                document.querySelector('#fm-Rg-Usuario').addEventListener('submit', (e) => {
+                    const id = document.querySelector('#id-usuario').value 
+                    e.preventDefault()
+                    if(id === ''){
+                        controllerUsuarios.rgUsuario()
+                    }else{
+                        controllerUsuarios.edUsuario(id)
+                    }
+                }, false)
+
+                document.querySelector('#buscar').addEventListener('change', () => {
+                    controllerUsuarios.obtenerDatosUsuarios().then(usuarios => {
+                        controllerUsuarios.lsUsuarios(usuarios)
+                    })
+                }, false)
                 break
         }
     }, false)
