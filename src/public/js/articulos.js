@@ -72,7 +72,7 @@ const controllerArticulos = {
             document.querySelector('#ls-articulos').children[1].innerHTML= `
                 <tr>
                     <td colspan="7" class="text-center">
-                    No se encontron ningún producto.
+                    No se encontro ningún producto.
                     </td>
                 </tr>
             `

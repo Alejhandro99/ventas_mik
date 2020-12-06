@@ -1,7 +1,7 @@
 window.addEventListener('load', ()=> {
 
     let hash = window.location.hash
-    if(hash === '#/'){
+    if(hash === '' || hash === '#/'){
         window.location.hash = '#/articulos'
         hash = window.location.hash
     }
